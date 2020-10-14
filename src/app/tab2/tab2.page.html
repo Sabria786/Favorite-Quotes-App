@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quotes Library</ion-title>
+    <ion-title>by Sabria Yaklur 016798858</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h3 class="ion-text-left">Select your Favorite Quotes</h3>
+  
+  <ion-list *ngFor="let quoteGroup of quoteCollection">
+    <ion-list-header>
+      <ion-label>
+        <ion-icon name="{{quoteGroup.icon}}"></ion-icon>
+        <h4>{{quoteGroup.category | uppercase}}</h4><br>
+        <p> {{quoteGroup.quotes.length}} quotes</p>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let quoteDetail of quoteGroup.quotes">
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option
+          (click)="Favorite(quoteDetail)"
+          color="secondary">
+          <ion-icon name="heart"></ion-icon>
+          Favorite
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h2><b>{{quoteDetail.id}} {{quoteDetail.person}}</b></h2>
+            <p>{{quoteDetail.text}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item>
+  </ion-list>
+</ion-content>
